@@ -57,9 +57,12 @@ async function demonstratingConditionals() {
                         `;
 
     await executeQuery(castExample);
-  } catch (err) {
-    console.error('An error ocurred', err);
-  } finally {
+  }finally {
     await pool.end();
   }
 }
+
+demonstratingConditionals().catch(e=>{
+  console.error("Error running conditionals: ", e);
+  process.exit(-1);
+})
