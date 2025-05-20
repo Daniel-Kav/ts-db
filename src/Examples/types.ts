@@ -76,3 +76,49 @@ export interface RouteTicket {
     brand: string | null;
     price_per_ticket: number | null;
 }
+
+// Grouping query result interfaces
+export interface RouteStats {
+    origin_airport: string;
+    total_flights: number;
+    avg_distance: number;
+    min_distance: number;
+    max_distance: number;
+}
+
+export interface CustomerBookingStats {
+    customer_id: string;
+    first_name: string;
+    last_name: string;
+    total_bookings: number;
+    total_spent: number;
+    avg_ticket_price: number;
+}
+
+export interface AircraftLoadStats {
+    aircraft_id: string;
+    flight_num: string;
+    total_passengers: number;
+    occupancy_rate: number;
+}
+
+export interface BrandPerformance {
+    brand: string;
+    total_revenue: number;
+    tickets_sold: number;
+    avg_ticket_price: number;
+}
+
+export interface FlightClassStats {
+    class_id: string;
+    total_passengers: number;
+    avg_ticket_price: number;
+    total_revenue: number;
+}
+
+export interface MonthlyBookingTrend {
+    booking_month: Date;
+    total_bookings: number;
+    avg_ticket_price: number;
+    total_revenue: number;
+}
