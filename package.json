@@ -7,6 +7,7 @@
     "dev": "nodemon src/main.ts",
     "dev:joins" : "nodemon src/examples/joins.ts",
     "dev:grouping" : "nodemon src/examples/grouping.ts",
+    "dev:conditionals" : "nodemon src/example/conditional-statements.ts",
     "build": "tsc"
   },
   "keywords": [],
