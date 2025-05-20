@@ -33,8 +33,15 @@ async function executeQuery(queryText: string, params?: any[]) {
     const client = await pool.connect();
     try {
         const result = await client.query(queryText, params);
-        console.log('\nQuery:', queryText);
-        console.log('Results:', result.rows);
+        console.log('\n=== Query ===');
+        // console.log(queryText);
+        console.log('\n=== Results ===');
+        if (result.rows.length === 0) {
+            console.log('No results found');
+        } else {
+            console.table(result.rows);
+        }
+        console.log('=============\n');
         return result.rows;
     } catch (err) {
         console.error('Error executing query:', err);
@@ -44,4 +51,4 @@ async function executeQuery(queryText: string, params?: any[]) {
     }
 }
 
-export { pool , executeQuery }
+export { pool, executeQuery }

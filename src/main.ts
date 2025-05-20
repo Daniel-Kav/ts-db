@@ -9,7 +9,7 @@ import { pool } from './db.config'
         
         try {
             const res = await client.query('SELECT * FROM routes LIMIT 10')
-            console.log(res.rows)
+            console.table(res.rows)
         } finally {
             // Make sure to release the client before any error handling, 
             // just in case the error handling itself throws an error
