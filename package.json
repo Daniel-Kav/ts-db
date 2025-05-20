@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/main.ts",
-    "dev:joins" : "nodemon src/examples/joins.ts",
+    "dev:joins": "nodemon src/examples/joins.ts",
+    "dev:filtering": "nodemon src/examples/filtering.ts",
     "dev:grouping" : "nodemon src/examples/grouping.ts",
     "build": "tsc"
   },
@@ -14,10 +15,15 @@
   "license": "ISC",
   "packageManager": "pnpm@10.8.0",
   "dependencies": {
-    "@types/pg": "^8.15.2",
     "dotenv": "^16.5.0",
     "nodemon": "^3.1.10",
     "pg": "^8.16.0",
     "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.19",
+    "@types/pg": "^8.15.2",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
   }
 }
