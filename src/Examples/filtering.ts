@@ -35,8 +35,7 @@ async function demonstrateFiltering() {
             WHERE class_id = 'Economy'
             AND brand = 'Boeing'
             LIMIT 5`;
-        const filterByMultipleConditionsResult = await executeQuery(filterByMultipleConditionsQuery);
-        console.table(filterByMultipleConditionsResult);
+       
         // 5. Filter by pattern matching
         const filterByPatternMatchingQuery = `
             SELECT * 
@@ -107,8 +106,8 @@ async function demonstrateFiltering() {
             FROM ticket_details 
             WHERE price_per_ticket BETWEEN 100 AND 500
             LIMIT 5`;
-        // const filterByBetweenClauseResult = await executeQuery(filterByBetweenClauseQuery);
-        // console.table(filterByBetweenClauseResult);
+        const filterByBetweenClauseResult = await executeQuery(filterByBetweenClauseQuery);
+        console.table(filterByBetweenClauseResult);
         // 13. Filter by NOT BETWEEN clause
         const filterByNotBetweenClauseQuery = `
             SELECT * 
