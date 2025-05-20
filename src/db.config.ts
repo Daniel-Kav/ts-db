@@ -25,7 +25,7 @@ async function executeQuery(queryText: string, params?: any[]) {
     try {
         const result = await client.query(queryText, params);
         console.log('\nQuery:', queryText);
-        console.log('Results:', result.rows);
+        // console.log('Results:', result.rows);
         return result.rows;
     } catch (err) {
         console.error('Error executing query:', err);

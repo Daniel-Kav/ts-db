@@ -29,7 +29,8 @@ async function demonstrateJoins() {
             FROM customer c
             LEFT JOIN passengers_on_flights pf ON c.customer_id = pf.customer_id
             LIMIT 5`;
-        await executeQuery(leftJoinQuery);
+        const leftjointable = await executeQuery(leftJoinQuery);
+        console.table(leftjointable)
 
         // 3. Multiple Table JOIN Example: Get comprehensive flight information
         const multiJoinQuery = `
@@ -130,3 +131,4 @@ demonstrateJoins().catch(err => {
     console.error('Error in join demonstrations:', err);
     process.exit(1);
 });
+
