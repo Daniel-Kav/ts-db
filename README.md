@@ -6,8 +6,7 @@ This project demonstrates various PostgreSQL database operations using TypeScrip
 
 ```
 ts-db/
-|__ assets
-|     |__airlines_dataset.zip
+|
 |     
 |      
 ├── src/
@@ -98,18 +97,6 @@ The project works with an airline database that includes the following tables:
 - `date_of_birth` - Date of birth of the customer
 - `gender` - Gender of the customer
 
-The Product database with the following table:
-### products
-- `product-id` - ID of the product
-- `product_name` - name of the product
-- `category` - category of products
-- `price` - price of the product
-- `stock_quantity` - amount of stock availale for a product
-- `rating` - customer rating for each product
-- `discount_available` - boolean value whether product has discount
-- `discount_percentage` - the percentage of discount given to a product
-
-
 ## Setup
 
 1. Clone the repository
@@ -149,9 +136,13 @@ The project includes various JOIN examples:
 <<<<<<< HEAD
 various Conditional operations in `src/Examples/conditional-statements.ts`:
 
-1. **simpleCase**: Perfoms simple case to sort stock in terms of availabilty
-2. **caseWithAgg**:To count the number of products in each stock level (Low, Medium, High).
-3. **coalesce**: To replace NULL values in the discount_percentage column with 0.
+The project includes various Conditionals statement
+1. **Simple CASE**: Categorize customers as Minor, Adult, or Senior based on age.
+2. **CASE with Aggregation**: Count how many customers fall into each age group.
+3. **COALESCE**: Replace `NULL` discounts with 0 and compute the final ticket price.
+4. **NULLIF**: Safely calculate revenue per passenger by avoiding division by zero.
+5. **CAST with CASE**: Compute the percentage of tickets with discounts using type casting and conditional logic.
+
 
 
 =======
@@ -176,8 +167,12 @@ pnpm dev:joins
 # Run Grouping examples
 pnpm dev:grouping
 
+#Run conditional examples
+pnpm dev:conditionals
+
 # Run main application
 pnpm dev
+
 ```
 
 ## Best Practices Demonstrated
