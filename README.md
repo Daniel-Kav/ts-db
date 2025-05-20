@@ -6,6 +6,10 @@ This project demonstrates various PostgreSQL database operations using TypeScrip
 
 ```
 ts-db/
+|__ assets
+|     |__airlines_dataset.zip
+|     
+|      
 ├── src/
 │   ├── db.config.ts      # Database configuration and pool setup
 │   ├── main.ts           # Main application entry point
@@ -63,6 +67,18 @@ The project works with an airline database that includes the following tables:
 - `date_of_birth` - Date of birth of the customer
 - `gender` - Gender of the customer
 
+The Product database with the following table:
+### products
+- `product-id` - ID of the product
+- `product_name` - name of the product
+- `category` - category of products
+- `price` - price of the product
+- `stock_quantity` - amount of stock availale for a product
+- `rating` - customer rating for each product
+- `discount_available` - boolean value whether product has discount
+- `discount_percentage` - the percentage of discount given to a product
+
+
 ## Setup
 
 1. Clone the repository
@@ -81,7 +97,8 @@ The project works with an airline database that includes the following tables:
 
 ## Examples
 
-The project includes various JOIN examples in `src/Examples/joins.ts`:
+The project includes:
+various JOIN examples in `src/Examples/joins.ts`:
 
 1. **INNER JOIN**: Get passenger travel details with customer information
 2. **LEFT JOIN**: Get all customers and their flight details
@@ -91,6 +108,14 @@ The project includes various JOIN examples in `src/Examples/joins.ts`:
 6. **CROSS JOIN**: Generate all possible route-aircraft combinations
 7. **NATURAL JOIN**: Join tables based on common column names
 8. **Complex Join with Aliases**: Complex queries with multiple conditions
+
+various Conditional operations in `src/Examples/conditional-statements.ts`:
+
+1. **simpleCase**: Perfoms simple case to sort stock in terms of availabilty
+2. **caseWithAgg**:To count the number of products in each stock level (Low, Medium, High).
+3. **coalesce**: To replace NULL values in the discount_percentage column with 0.
+
+
 
 ## Running the Examples
 

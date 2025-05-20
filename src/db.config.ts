@@ -1,5 +1,14 @@
-require('dotenv').config()
-const { Pool } = require('pg')
+import dotenv from "dotenv";
+import { Pool } from "pg";
+import path from "path";
+
+const result = dotenv.config({
+  path: path.resolve(process.cwd(), '.env')
+});
+
+if (result.error) {
+  console.error('Error loading .env file:', result.error);
+}
 
 const pool = new Pool({
     user: process.env.DB_USER,
