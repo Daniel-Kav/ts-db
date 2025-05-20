@@ -158,6 +158,12 @@ The project includes various GROUP BY and HAVING examples:
 6. **Class Analysis**: Revenue and passenger statistics by flight class
 >>>>>>> ea5c27a93a63a42695495b1b0c423b4c5291334c
 
+### Sets, Cubes and Rollup
+1. **GROUPING SETS**: Show total revenue grouped by fare type, flight ID, and overall total.
+2. **ROLLUP**: Display total ticket revenue by fare type including subtotals and a grand total.
+3. **CUBE**: Calculate passenger counts for every combination of route and month including all subtotals and overall total.
+
+
 ## Running the Examples
 
 ```bash
