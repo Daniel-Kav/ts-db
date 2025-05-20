@@ -1,6 +1,6 @@
 # TypeScript PostgreSQL Database Examples
 
-This project demonstrates various PostgreSQL database operations using TypeScript and the `node-postgres` library. It includes examples of different types of database joins and connection pooling implementations.
+This project demonstrates various PostgreSQL database operations using TypeScript and the `node-postgres` library. It includes examples of different types of database joins, grouping operations, and connection pooling implementations with full type safety.
 
 ## Project Structure
 
@@ -10,7 +10,9 @@ ts-db/
 │   ├── db.config.ts      # Database configuration and pool setup
 │   ├── main.ts           # Main application entry point
 │   └── Examples/
-│       └── joins.ts      # Examples of different SQL JOIN operations
+│       ├── joins.ts      # Examples of different SQL JOIN operations
+│       ├── grouping.ts   # Examples of GROUP BY and HAVING operations
+│       └── types.ts      # Shared TypeScript interfaces and types
 ├── package.json
 ├── pnpm-lock.yaml
 └── tsconfig.json
@@ -21,7 +23,36 @@ ts-db/
 - Connection pooling with PostgreSQL
 - Environment variables configuration using dotenv
 - Comprehensive JOIN examples with airline database schema
+- Advanced GROUP BY and HAVING examples
+- Strongly typed interfaces for all operations
 - TypeScript implementation for type safety
+- Centralized type definitions
+- Table-formatted query results output
+
+## Type System
+
+The project uses a comprehensive type system defined in `src/Examples/types.ts`:
+
+### Database Tables
+- `Customer` - Customer information
+- `PassengerFlight` - Flight booking details
+- `TicketDetail` - Ticket information
+- `Route` - Flight route information
+
+### Query Results
+- `PassengerDetail` - Join results for passenger information
+- `CustomerFlight` - Extended customer information with flight details
+- `ComprehensiveFlight` - Complete flight information
+- `RouteTicket` - Combined route and ticket information
+- `SameDistanceRoute` - Self-join results for route comparisons
+
+### Grouping Results
+- `RouteStats` - Statistics for routes
+- `CustomerBookingStats` - Customer booking analysis
+- `AircraftLoadStats` - Aircraft occupancy information
+- `BrandPerformance` - Airline brand performance metrics
+- `FlightClassStats` - Statistics by flight class
+- `MonthlyBookingTrend` - Booking trends over time
 
 ## Database Schema
 
@@ -81,7 +112,9 @@ The project works with an airline database that includes the following tables:
 
 ## Examples
 
-The project includes various JOIN examples in `src/Examples/joins.ts`:
+### JOIN Operations (`src/Examples/joins.ts`)
+
+The project includes various JOIN examples:
 
 1. **INNER JOIN**: Get passenger travel details with customer information
 2. **LEFT JOIN**: Get all customers and their flight details
@@ -92,41 +125,61 @@ The project includes various JOIN examples in `src/Examples/joins.ts`:
 7. **NATURAL JOIN**: Join tables based on common column names
 8. **Complex Join with Aliases**: Complex queries with multiple conditions
 
+### Grouping Operations (`src/Examples/grouping.ts`)
+
+The project includes various GROUP BY and HAVING examples:
+
+1. **Basic GROUP BY**: Route statistics by origin airport
+2. **GROUP BY with HAVING**: High-value customer identification
+3. **Complex GROUP BY**: Aircraft load analysis with occupancy rates
+4. **Multi-table GROUP BY**: Brand performance analysis
+5. **Date-based GROUP BY**: Monthly booking trends
+6. **Class Analysis**: Revenue and passenger statistics by flight class
+
 ## Running the Examples
 
-To run the JOIN examples:
 ```bash
+# Run JOIN examples
 pnpm dev:joins
+
+# Run Grouping examples
+pnpm dev:grouping
+
+# Run main application
+pnpm dev
 ```
-
-## Database Connection
-
-The project uses connection pooling for better performance and resource management. The pool configuration includes:
-
-- Maximum 20 clients in the pool
-- 30 seconds idle timeout
-- 2 seconds connection timeout
 
 ## Best Practices Demonstrated
 
-1. **Environment Variables**: Sensitive information is stored in `.env` file
-2. **Connection Pooling**: Efficient database connection management
-3. **Error Handling**: Proper try-catch blocks and resource cleanup
-4. **TypeScript**: Type safety and better development experience
-5. **Query Organization**: Well-structured and documented SQL queries
-6. **Resource Management**: Proper release of database connections
+1. **Type Safety**
+   - Strongly typed interfaces for all database operations
+   - Type-safe query results
+   - Centralized type definitions
+
+2. **Database Connection Management**
+   - Connection pooling for better performance
+   - Proper resource cleanup
+   - Error handling
+
+3. **Code Organization**
+   - Modular code structure
+   - Separated concerns (types, queries, configuration)
+   - Clean and maintainable codebase
+
+4. **Query Organization**
+   - Parameterized queries for security
+   - Clear and readable SQL statements
+   - Comprehensive examples of different SQL operations
+
+5. **Development Experience**
+   - Nodemon for automatic reloading
+   - Clear console output with table formatting
+   - Detailed error messages
 
 ## Dependencies
 
 - `pg`: PostgreSQL client for Node.js
+- `@types/pg`: TypeScript types for pg
 - `dotenv`: Environment variable management
-- `typescript`: TypeScript support
-- `ts-node`: TypeScript execution environment
-
-## Development
-
-The project uses TypeScript for type safety and better development experience. The configuration can be found in `tsconfig.json`.
-
-## Note
-
-Make sure to properly configure your PostgreSQL database and update the environment variables before running the examples.
+- `ts-node`: TypeScript execution
+- `nodemon`: Development server with auto-reload

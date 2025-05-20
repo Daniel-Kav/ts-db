@@ -8,8 +8,8 @@ import { pool } from './db.config'
         const client = await pool.connect()
         
         try {
-            const res = await client.query('SELECT * FROM routes LIMIT 5')
-            console.log(res.rows)
+            const res = await client.query('SELECT * FROM routes LIMIT 10')
+            console.table(res.rows)
         } finally {
             // Make sure to release the client before any error handling, 
             // just in case the error handling itself throws an error
