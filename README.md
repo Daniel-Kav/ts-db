@@ -6,6 +6,9 @@ This project demonstrates various PostgreSQL database operations using TypeScrip
 
 ```
 ts-db/
+|
+|     
+|      
 ├── src/
 │   ├── db.config.ts      # Database configuration and pool setup
 │   ├── main.ts           # Main application entry point
@@ -112,9 +115,14 @@ The project works with an airline database that includes the following tables:
 
 ## Examples
 
+<<<<<<< HEAD
+The project includes:
+various JOIN examples in `src/Examples/joins.ts`:
+=======
 ### JOIN Operations (`src/Examples/joins.ts`)
 
 The project includes various JOIN examples:
+>>>>>>> ea5c27a93a63a42695495b1b0c423b4c5291334c
 
 1. **INNER JOIN**: Get passenger travel details with customer information
 2. **LEFT JOIN**: Get all customers and their flight details
@@ -125,6 +133,19 @@ The project includes various JOIN examples:
 7. **NATURAL JOIN**: Join tables based on common column names
 8. **Complex Join with Aliases**: Complex queries with multiple conditions
 
+<<<<<<< HEAD
+various Conditional operations in `src/Examples/conditional-statements.ts`:
+
+The project includes various Conditionals statement
+1. **Simple CASE**: Categorize customers as Minor, Adult, or Senior based on age.
+2. **CASE with Aggregation**: Count how many customers fall into each age group.
+3. **COALESCE**: Replace `NULL` discounts with 0 and compute the final ticket price.
+4. **NULLIF**: Safely calculate revenue per passenger by avoiding division by zero.
+5. **CAST with CASE**: Compute the percentage of tickets with discounts using type casting and conditional logic.
+
+
+
+=======
 ### Grouping Operations (`src/Examples/grouping.ts`)
 
 The project includes various GROUP BY and HAVING examples:
@@ -135,6 +156,13 @@ The project includes various GROUP BY and HAVING examples:
 4. **Multi-table GROUP BY**: Brand performance analysis
 5. **Date-based GROUP BY**: Monthly booking trends
 6. **Class Analysis**: Revenue and passenger statistics by flight class
+>>>>>>> ea5c27a93a63a42695495b1b0c423b4c5291334c
+
+### Sets, Cubes and Rollup
+1. **GROUPING SETS**: Show total revenue grouped by fare type, flight ID, and overall total.
+2. **ROLLUP**: Display total ticket revenue by fare type including subtotals and a grand total.
+3. **CUBE**: Calculate passenger counts for every combination of route and month including all subtotals and overall total.
+
 
 ## Running the Examples
 
@@ -145,8 +173,12 @@ pnpm dev:joins
 # Run Grouping examples
 pnpm dev:grouping
 
+#Run conditional examples
+pnpm dev:conditionals
+
 # Run main application
 pnpm dev
+
 ```
 
 ## Best Practices Demonstrated

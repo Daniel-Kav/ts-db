@@ -21,4 +21,4 @@ import { pool } from './db.config'
         // Properly close the pool when your app is shutting down
         await pool.end()
     }
-})()
+})();
