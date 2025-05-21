@@ -155,3 +155,22 @@ export interface FlightComparison {
     destination: string;
     price: number;
 }
+
+//conditionals query types
+
+export interface customerGenderNumber{
+    Males: number;
+    Females: number;
+}
+
+export interface avgTicketPrice extends TicketDetail{
+    price_diff?:number
+}
+
+export interface milesToString extends Route{
+    distance_mile_str: string;
+}
+
+export interface cubeExampleType extends PassengerFlight{
+    total_ticekts: number;
+}

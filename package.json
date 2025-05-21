@@ -8,9 +8,8 @@
     "dev:joins": "nodemon src/examples/joins.ts",
     "dev:filtering": "nodemon src/examples/filtering.ts",
     "dev:grouping" : "nodemon src/examples/grouping.ts",
-    "dev:conditionals" : "nodemon src/example/conditional-statements.ts",
-    "dev:sets" : "nodemon src/example/set-cubes.ts",
-    "dev:queries": "nodemon src/example/queries.ts",
+    "dev:conditionals" : "nodemon src/examples/conditional-statements.ts",
+    "dev:sets" : "nodemon src/examples/sets-cubes.ts",
     "build": "tsc"
   },
   "keywords": [],
