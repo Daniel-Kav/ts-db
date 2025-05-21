@@ -9,7 +9,7 @@
     "dev:filtering": "nodemon src/examples/filtering.ts",
     "dev:grouping" : "nodemon src/examples/grouping.ts",
     "dev:conditionals" : "nodemon src/examples/conditional-statements.ts",
-    "dev:sets" : "nodemon src/examples/set-cubes.ts",
+    "dev:sets" : "nodemon src/examples/sets-cubes.ts",
     "build": "tsc"
   },
   "keywords": [],

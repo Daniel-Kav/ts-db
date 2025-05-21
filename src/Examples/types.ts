@@ -170,3 +170,7 @@ export interface avgTicketPrice extends TicketDetail{
 export interface milesToString extends Route{
     distance_mile_str: string;
 }
+
+export interface cubeExampleType extends PassengerFlight{
+    total_ticekts: number;
+}

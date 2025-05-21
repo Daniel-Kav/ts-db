@@ -1,4 +1,4 @@
-import { pool, executeQuery } from '../db.config';
+import { pool} from '../db.config';
 
 import type {
     CustomerFlight,
