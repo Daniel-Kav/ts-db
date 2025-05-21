@@ -10,6 +10,7 @@
     "dev:grouping" : "nodemon src/examples/grouping.ts",
     "dev:conditionals" : "nodemon src/example/conditional-statements.ts",
     "dev:sets" : "nodemon src/example/set-cubes.ts",
+    "dev:queries": "nodemon src/example/queries.ts",
     "build": "tsc"
   },
   "keywords": [],
