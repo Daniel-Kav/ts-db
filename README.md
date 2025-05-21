@@ -1,36 +1,46 @@
 # TypeScript PostgreSQL Database Examples
 
-This project demonstrates various PostgreSQL database operations using TypeScript and the `node-postgres` library. It includes examples of different types of database joins, grouping operations, and connection pooling implementations with full type safety.
+This project demonstrates various PostgreSQL database operations using TypeScript and the `node-postgres` library. It includes examples of different types of database operations, connection pooling implementations, and full type safety.
 
 ## Project Structure
 
 ```
 ts-db/
-|
-|     
-|      
 ├── src/
-│   ├── db.config.ts      # Database configuration and pool setup
-│   ├── main.ts           # Main application entry point
+│   ├── db.config.ts           # Database configuration and pool setup
+│   ├── main.ts               # Main application entry point
+│   ├── airline.sql           # Database schema and initial data
 │   └── Examples/
-│       ├── joins.ts      # Examples of different SQL JOIN operations
-│       ├── grouping.ts   # Examples of GROUP BY and HAVING operations
-│       └── types.ts      # Shared TypeScript interfaces and types
+│       ├── data-modification.ts  # CRUD operations and data manipulation
+│       ├── joins.ts          # Examples of different SQL JOIN operations
+│       ├── filtering.ts      # WHERE clause and filtering examples
+│       ├── grouping.ts       # GROUP BY and HAVING operations
+│       ├── conditional-statements.ts  # CASE, COALESCE, NULLIF examples
+│       ├── set-operations.ts # UNION, INTERSECT, EXCEPT operations
+│       ├── sets-cubes.ts     # GROUPING SETS, CUBE, ROLLUP examples
+│       └── types.ts          # Shared TypeScript interfaces and types
 ├── package.json
-├── pnpm-lock.yaml
-└── tsconfig.json
+├── tsconfig.json
+└── README.md
 ```
 
 ## Features
 
 - Connection pooling with PostgreSQL
 - Environment variables configuration using dotenv
-- Comprehensive JOIN examples with airline database schema
-- Advanced GROUP BY and HAVING examples
+- Comprehensive database operations:
+  - CRUD operations with auto-incrementing IDs
+  - JOIN operations with airline database schema
+  - Advanced filtering and WHERE clauses
+  - GROUP BY and HAVING examples
+  - Conditional statements (CASE, COALESCE, NULLIF)
+  - Set operations (UNION, INTERSECT, EXCEPT)
+  - Advanced grouping (GROUPING SETS, CUBE, ROLLUP)
 - Strongly typed interfaces for all operations
 - TypeScript implementation for type safety
 - Centralized type definitions
 - Table-formatted query results output
+- Automatic sequence management for IDs
 
 ## Type System
 
@@ -61,6 +71,21 @@ The project uses a comprehensive type system defined in `src/Examples/types.ts`:
 
 The project works with an airline database that includes the following tables:
 
+### customer
+- `customer_id` - Auto-incrementing ID of the customer
+- `first_name` - First name of the customer
+- `last_name` - Last name of the customer
+- `date_of_birth` - Date of birth of the customer
+- `gender` - Gender of the customer
+
+### routes
+- `route_id` - Auto-incrementing ID of the route
+- `flight_num` - Specific flight number for each route
+- `origin_airport` - Departure location
+- `destination_airport` - Arrival location
+- `aircraft_id` - ID of each aircraft in a brand
+- `distance_miles` - Distance between departure and arrival location
+
 ### passengers_on_flights
 - `aircraft_id` - ID of each aircraft in a brand
 - `route_id` - Route ID of from and to location
@@ -82,21 +107,6 @@ The project works with an airline database that includes the following tables:
 - `price_per_ticket` - Price of a ticket
 - `brand` - Aviation service provider for each aircraft
 
-### routes
-- `route_id` - Route ID of from and to location
-- `flight_num` - Specific fight number for each route
-- `origin_airport` - Departure location
-- `destination_airport` - Arrival location
-- `aircraft_id` - ID of each aircraft in a brand
-- `distance_miles` - Distance between departure and arrival location
-
-### customer
-- `customer_id` - ID of the customer
-- `first_name` - First name of the customer
-- `last_name` - Last name of the customer
-- `date_of_birth` - Date of birth of the customer
-- `gender` - Gender of the customer
-
 ## Setup
 
 1. Clone the repository
@@ -112,74 +122,47 @@ The project works with an airline database that includes the following tables:
    DB_PASSWORD=your_password
    DB_PORT=5432
    ```
-
-## Examples
-
-<<<<<<< HEAD
-The project includes:
-various JOIN examples in `src/Examples/joins.ts`:
-=======
-### JOIN Operations (`src/Examples/joins.ts`)
-
-The project includes various JOIN examples:
->>>>>>> ea5c27a93a63a42695495b1b0c423b4c5291334c
-
-1. **INNER JOIN**: Get passenger travel details with customer information
-2. **LEFT JOIN**: Get all customers and their flight details
-3. **Multiple Table JOIN**: Get comprehensive flight information
-4. **SELF JOIN**: Find routes with same distance
-5. **FULL OUTER JOIN**: Find all routes and tickets, including unmatched records
-6. **CROSS JOIN**: Generate all possible route-aircraft combinations
-7. **NATURAL JOIN**: Join tables based on common column names
-8. **Complex Join with Aliases**: Complex queries with multiple conditions
-
-<<<<<<< HEAD
-various Conditional operations in `src/Examples/conditional-statements.ts`:
-
-The project includes various Conditionals statement
-1. **Simple CASE**: Categorize customers as Minor, Adult, or Senior based on age.
-2. **CASE with Aggregation**: Count how many customers fall into each age group.
-3. **COALESCE**: Replace `NULL` discounts with 0 and compute the final ticket price.
-4. **NULLIF**: Safely calculate revenue per passenger by avoiding division by zero.
-5. **CAST with CASE**: Compute the percentage of tickets with discounts using type casting and conditional logic.
-
-
-
-=======
-### Grouping Operations (`src/Examples/grouping.ts`)
-
-The project includes various GROUP BY and HAVING examples:
-
-1. **Basic GROUP BY**: Route statistics by origin airport
-2. **GROUP BY with HAVING**: High-value customer identification
-3. **Complex GROUP BY**: Aircraft load analysis with occupancy rates
-4. **Multi-table GROUP BY**: Brand performance analysis
-5. **Date-based GROUP BY**: Monthly booking trends
-6. **Class Analysis**: Revenue and passenger statistics by flight class
->>>>>>> ea5c27a93a63a42695495b1b0c423b4c5291334c
-
-### Sets, Cubes and Rollup
-1. **GROUPING SETS**: Show total revenue grouped by fare type, flight ID, and overall total.
-2. **ROLLUP**: Display total ticket revenue by fare type including subtotals and a grand total.
-3. **CUBE**: Calculate passenger counts for every combination of route and month including all subtotals and overall total.
-
+4. Import the database schema:
+   ```bash
+   psql -U your_username -d your_database_name -f src/airline.sql
+   ```
 
 ## Running the Examples
 
+The project includes several example scripts that demonstrate different database operations:
+
 ```bash
-# Run JOIN examples
+# Run data modification examples (CRUD operations)
+pnpm dev:modify
+
+# Run JOIN examples (INNER, LEFT, RIGHT, FULL OUTER, CROSS, and SELF JOINs)
 pnpm dev:joins
 
-# Run Grouping examples
+# Run filtering examples (WHERE clauses and advanced filtering)
+pnpm dev:filtering
+
+# Run grouping examples (GROUP BY, HAVING, and aggregation functions)
 pnpm dev:grouping
 
-#Run conditional examples
+# Run conditional statement examples (CASE, COALESCE, NULLIF)
 pnpm dev:conditionals
+
+# Run set operation examples (UNION, INTERSECT, EXCEPT)
+pnpm dev:set-ops
 
 # Run main application
 pnpm dev
-
 ```
+
+Each script demonstrates different aspects of PostgreSQL operations with TypeScript:
+
+- `dev:modify`: Shows CRUD operations with auto-incrementing IDs and sequence management
+- `dev:joins`: Demonstrates various types of SQL JOIN operations with the airline database
+- `dev:filtering`: Examples of WHERE clauses and advanced filtering techniques
+- `dev:grouping`: Shows GROUP BY, HAVING, and aggregation function usage
+- `dev:conditionals`: Demonstrates CASE statements, COALESCE, and NULLIF operations
+- `dev:set-ops`: Examples of set operations like UNION, INTERSECT, and EXCEPT
+- `dev`: Runs the main application with all examples
 
 ## Best Practices Demonstrated
 
@@ -192,6 +175,7 @@ pnpm dev
    - Connection pooling for better performance
    - Proper resource cleanup
    - Error handling
+   - Automatic sequence management
 
 3. **Code Organization**
    - Modular code structure
@@ -215,3 +199,5 @@ pnpm dev
 - `dotenv`: Environment variable management
 - `ts-node`: TypeScript execution
 - `nodemon`: Development server with auto-reload
+- `typescript`: TypeScript compiler
+- `tsx`: TypeScript execution environment
