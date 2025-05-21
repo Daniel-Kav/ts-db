@@ -1,27 +1,27 @@
 // Database table interfaces
 export interface Customer {
-    customer_id: string;
+    customer_id: number;
     first_name: string;
     last_name: string;
-    date_of_birth: Date;
+    date_of_birth: string;  // Changed from Date to string to match VARCHAR(20)
     gender: string;
 }
 
 export interface PassengerFlight {
+    customer_id: number;    // Changed to number to match INT
     aircraft_id: string;
-    route_id: string;
-    customer_id: string;
+    route_id: number;      // Changed to number to match INT
     depart: string;
     arrival: string;
     seat_num: string;
     class_id: string;
-    travel_date: Date;
+    travel_date: string;   // Changed from Date to string to match VARCHAR(20)
     flight_num: string;
 }
 
 export interface TicketDetail {
-    p_date: Date;
-    customer_id: string;
+    p_date: string;        // Changed from Date to string to match VARCHAR(20)
+    customer_id: number;   // Changed to number to match INT
     aircraft_id: string;
     class_id: string;
     no_of_tickets: number;
@@ -31,7 +31,7 @@ export interface TicketDetail {
 }
 
 export interface Route {
-    route_id: string;
+    route_id: number;      // Changed to number to match INT
     flight_num: string;
     origin_airport: string;
     destination_airport: string;
@@ -121,4 +121,37 @@ export interface MonthlyBookingTrend {
     total_bookings: number;
     avg_ticket_price: number;
     total_revenue: number;
+}
+
+// Set Operations query result interfaces
+export interface CustomerRoute {
+    customer_id: string;
+    first_name: string;
+    last_name: string;
+    flight_num: string;
+    origin_airport: string;
+    destination_airport: string;
+}
+
+export interface FlightComparison {
+    flight_num: string;
+    origin: string;
+    destination: string;
+    price: number;
+}
+
+export interface CustomerRoute {
+    customer_id: string;
+    first_name: string;
+    last_name: string;
+    flight_num: string;
+    origin_airport: string;
+    destination_airport: string;
+}
+
+export interface FlightComparison {
+    flight_num: string;
+    origin: string;
+    destination: string;
+    price: number;
 }
