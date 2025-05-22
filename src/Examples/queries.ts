@@ -19,14 +19,14 @@ import { pool,executeQuery } from "../db.config";
 async function demonstrateQuerying() {
     try {
         
+      
     // 1. Basic SELECT query
     const basicSelectQuery = `
         SELECT * 
         FROM customer 
         LIMIT 5`;
 
-    const basicSelectResult = await executeQuery(basicSelectQuery);
-    console.table(basicSelectResult);
+    await executeQuery(basicSelectQuery);
 
     // 2. SELECT with WHERE clause
     const whereClauseQuery = `
