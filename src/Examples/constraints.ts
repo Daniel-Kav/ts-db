@@ -1,3 +1,8 @@
+//In this we are just demonstrating how contraints can be run in code
+// If you want to see this code in action, you can drop all the primary and foreign key constraints first
+//then run this code, other wise, PostgreSQL will throw and error since our DDL had already put these contraints during creation
+
+
 import { pool } from '../db.config';
 import { CustomerFlight, PassengerFlight } from './types';
 
@@ -35,10 +40,11 @@ class AirlinesQueriesOnConstraints {
     }
   }
 
+
   async makeUnique(){
     const uniqueConstraint =
     ` ALTER TABLE customer
-ADD CONSTRAINT pk_customer_id PRIMARY KEY (customer_id)
+ADD CONSTRAINT pk_customer_id PRIMARY KEY(customer_id)
 `;
 
     return await this.executeQuery<CustomerFlight>(uniqueConstraint);
@@ -80,6 +86,7 @@ async function demonstrateConstraints(){
   try{
 
     const queries = new AirlinesQueriesOnConstraints(pool);
+
 
     //1. Primary Key constraints
     console.log('\n=== Check column id is unique (Primary Key constraint)===');
